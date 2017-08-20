@@ -1,13 +1,14 @@
 import random
 import functions as func
-from KeyGeneration import calcPrimes as calcPrimes
+from definitions import PUBLIC_KEY_PATH
+from definitions import PRIVATE_KEY_PATH
 
 #primList = func.prime(100000000)  # just for testing..
 # if primes file doesnt exist, write it
 try:
     primList = func.read("primes")
 except:
-    func.write(func.prime(100000000), "primes")
+    func.write(func.prime(10000000), "primes")
     primList = func.read("primes")
 
 # generate public and private key and write to separate files
@@ -55,10 +56,14 @@ def generateKeys():  # return e, d, n
         d = x
 
     # ---write---
-    func.write([e, n], "Encryption/publicKey")
-    func.write([d, n], "Encryption/privateKey")
+    # only for mac:
+    #func.write([e, n], "/Users/mac/Documents/GitHub/RSA-GitHub/Encryption/publicKey")
+    #func.write([d, n], "/Users/mac/Documents/GitHub/RSA-GitHub/Encryption/privateKey")
     # write to main folder:
     #func.write([e, n], "publicKey")
     #func.write([d, n], "privateKey")
+    # general solution:
+    func.write([e, n], PUBLIC_KEY_PATH)
+    func.write([d, n], PRIVATE_KEY_PATH)
 
     return e, d, n

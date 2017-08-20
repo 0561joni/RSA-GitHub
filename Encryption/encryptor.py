@@ -1,9 +1,10 @@
 import functions as func
+from definitions import PUBLIC_KEY_PATH
 
 def encrypt(message = "hi"):
     encryptedUni = []
 
-    e, n = func.read("publicKey") # store first to lines in e and n
+    e, n = func.read(PUBLIC_KEY_PATH) # store first two lines in e and n
 
     if isinstance(message, str):
         uniCodeList = func.stringToUnicode(message)
